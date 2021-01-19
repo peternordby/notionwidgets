@@ -38,11 +38,11 @@
     var days = Math.floor((today - lastbirth) / (1000 * 3600 * 24));
     var hrs = Math.floor(today.getHours() - birth.getHours());
     if (hrs < 0) {
-        hrs += 24
+        hrs += 24;
     }
 
     var msg = years + " år " + days + " dager" + " og " + hrs + " timer";
-    document.getElementById('lbl').innerHTML = msg;
+    document.getElementById('lbl').innerHTML = '<div id="date"> Nå er du </div>' + msg;
 </script>
 
 </html>
