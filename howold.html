@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>Greeting Message</title>
+    <style>
+        #lbl {
+            font-family: helvetica;
+            font-size: 36px;
+            color: #626262;
+            padding: 5px;
+            border: 1px solid #ececec;
+            text-align: center;
+            line-height: 1.5;
+            height: 85%
+        }
+
+        #date {
+            font-size: large;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="lbl"></div>
+</body>
+
+<script>
+    var today = new Date();
+    var birth = new Date(1999, 08, 21, 08);
+    var lastbirth = new Date(today.getFullYear(), 08, 21, 08);
+    var years = today.getFullYear() - birth.getFullYear();
+    var months = today.getMonth() - birth.getMonth();
+    if (months < 0 || (months === 0 && today.getDate() < birth.getDate())) {
+        years --;
+        lastbirth = new Date(today.getFullYear()-1, 08, 21, 08);
+    }
+    var days = Math.floor((today - lastbirth) / (1000 * 3600 * 24));
+    var hrs = Math.floor(today.getHours() - birth.getHours());
+    if (hrs < 0) {
+        hrs += 24
+    }
+
+    var msg = years + " år " + days + " dager" + " og " + hrs + " timer";
+    document.getElementById('lbl').innerHTML = msg;
+</script>
+
+</html>
