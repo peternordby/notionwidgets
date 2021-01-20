@@ -1,71 +1,48 @@
-<html> 
+<html>
+
 <head>
-    <title>Greeting Message</title> 
+    <title>Greeting Message</title>
     <style>
-#lbl {
-    font-family: helvetica;
-    font-size: 36px;
-    color: #626262;
-    padding: 5px;
-    border: 1px solid #ececec;
-    text-align: center;
-    line-height: 1.5;
-    height:85%
+        #lbl {
+            font-family: helvetica;
+            font-size: 36px;
+            color: #626262;
+            padding: 5px;
+            border: 1px solid #ececec;
+            text-align: center;
+            line-height: 1.5;
+            height: 85%
+        }
 
+        #date {
+            font-size: large;
+        }
 
-}
-#date{
-    font-size:large;
-}
     </style>
 </head>
+
 <body>
     <div id="lbl"></div>
 </body>
 
 <script>
-    var weekday = new Array(7);
-    weekday[0] = "Søndag";
-    weekday[1] = "Mandag";
-    weekday[2] = "Tirsdag";
-    weekday[3] = "Onsdag";
-    weekday[4] = "Torsdag";
-    weekday[5] = "Fredag";
-    weekday[6] = "Lørdag";
-    
-    var month = new Array(12);
-    month[0] = "januar";
-    month[1] = "februar";
-    month[2] = "mars";
-    month[3] = "april";
-    month[4] = "mai";
-    month[5] = "juni";
-    month[6] = "juli";
-    month[7] = "august";
-    month[8] = "september";
-    month[9] = "oktober";
-    month[10] = "november";
-    month[11] = "desember";
-    
     var today = new Date();
-    var hrs = today.getHours();
-    var dayOfWeek = weekday[today.getDay()];
-    var monthstring = month[today.getMonth()];
-    var date = dayOfWeek+" " + today.getDate() + ". " + monthstring + ' ' +today.getFullYear();
-
-    var greet;
-
-    if (05 <= hrs && hrs < 12)
-        greet = 'God morgen ';
-    else if (12 <= hrs && hrs < 17)
-        greet = 'God ettermiddag ';
-    else if (17 <= hrs && hrs <= 24)
-        greet = 'God kveld ';
-    else if (hrs < 05) {
-        greet = 'God natt '
+    var birth = new Date(1999, 08, 21, 08);
+    var lastbirth = new Date(today.getFullYear(), 08, 21, 08);
+    var years = today.getFullYear() - birth.getFullYear();
+    var months = today.getMonth() - birth.getMonth();
+    if (months < 0 || (months === 0 && today.getDate() < birth.getDate())) {
+        years --;
+        lastbirth = new Date(today.getFullYear()-1, 08, 21, 08);
+    }
+    var days = Math.floor((today - lastbirth) / (1000 * 3600 * 24));
+    var hrs = Math.floor(today.getHours() - birth.getHours());
+    if (hrs < 0) {
+        hrs += 24;
     }
 
-    document.getElementById('lbl').innerHTML =
-        greet+="Peter!" + `<div id="date"> Det er ${date}</div>`;
-</script> 
+    var msg = years + " år " + days + " dager" + " og " + hrs + " timer";
+    document.getElementById('lbl').innerHTML = '<div id="date"> Nå er du </div>' + msg;
+</script>
+
 </html>
