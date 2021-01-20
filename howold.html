@@ -42,7 +42,13 @@
     }
 
     var msg = years + " år " + days + " dager" + " og " + hrs + " timer";
-    document.getElementById('lbl').innerHTML = '<div id="date"> Nå er du </div>' + msg;
+    if (days === 0) {
+        msg = "Gratulerer med " + years + " års dagen!"
+        document.getElementById('lbl').innerHTML = msg;
+    }
+    else {
+        document.getElementById('lbl').innerHTML = '<div id="date"> Nå er du </div>' + msg;
+    }
 </script>
 
 </html>
