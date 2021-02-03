@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Greeting Message</title>
+    <title>Semester Progress</title>
     <style>
         #lbl {
             font-family: helvetica;
@@ -28,11 +28,11 @@
 <script>
     var today = new Date();
     var semester_start = new Date(2021, 00, 11);
-    var semester_end = new Date(2021, 05, 11)
-    var progress = (today.valueOf() - semester_start.valueOf())/(semester_end.valueOf() - semester_start.valueOf())
-    var msg = orogress + " timer";
+    var semester_end = new Date(2021, 05, 11);
+    var progress = ((today.valueOf() - semester_start.valueOf())/(semester_end.valueOf() - semester_start.valueOf())*100).toFixed(1);
+    var msg = progress + "%";
     
-    document.getElementById('lbl').innerHTML = msg;
+    document.getElementById('lbl').innerHTML = '<div id="date"> Semesterprogresjon: </div>' + msg;
 </script>
 
 </html>
