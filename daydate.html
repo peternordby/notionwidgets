@@ -24,7 +24,7 @@
 </body>
 
 <script>
-    var weekday = new Array(7);
+    let weekday = new Array(7);
     weekday[0] = "søndag";
     weekday[1] = "mandag";
     weekday[2] = "tirsdag";
@@ -33,7 +33,7 @@
     weekday[5] = "fredag";
     weekday[6] = "lørdag";
     
-    var month = new Array(12);
+    let month = new Array(12);
     month[0] = "januar";
     month[1] = "februar";
     month[2] = "mars";
@@ -47,13 +47,19 @@
     month[10] = "november";
     month[11] = "desember";
     
-    var today = new Date();
-    var hrs = today.getHours();
-    var dayOfWeek = weekday[today.getDay()];
-    var monthstring = month[today.getMonth()];
-    var date = dayOfWeek+" " + today.getDate() + ". " + monthstring + ' ' +today.getFullYear();
+    let today = new Date();
+    let hrs = today.getHours();
+    let dayOfWeek = weekday[today.getDay()];
+    let monthstring = month[today.getMonth()];
+    // Get week number
+    today.setHours(0,0,0,0);
+    today.setDate(today.getDate() + 3 - (today.getDay() + 6) % 7);
+    let weekOne = new Date(today.getFullYear(), 0, 4);
+    let weekNum = 1 + Math.round(((today.getTime() - weekOne.getTime()) / 86400000
+            - 3 + (weekOne.getDay() + 6) % 7) / 7)
+    let date = dayOfWeek + ' ' + today.getDate() + '. ' + monthstring + ' ' + today.getFullYear() + '<br/>Uke ' + weekNum;
 
-    var greet;
+    let greet;
 
     if (05 <= hrs && hrs < 12)
         greet = 'God morgen ';
