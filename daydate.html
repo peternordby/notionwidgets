@@ -51,13 +51,14 @@
     let hrs = today.getHours();
     let dayOfWeek = weekday[today.getDay()];
     let monthstring = month[today.getMonth()];
+    let datenum = today.getDate();
     // Get week number
     today.setHours(0,0,0,0);
     today.setDate(today.getDate() + 3 - (today.getDay() + 6) % 7);
     let weekOne = new Date(today.getFullYear(), 0, 4);
     let weekNum = 1 + Math.round(((today.getTime() - weekOne.getTime()) / 86400000
             - 3 + (weekOne.getDay() + 6) % 7) / 7)
-    let date = dayOfWeek + ' ' + today.getDate() + '. ' + monthstring + ' ' + today.getFullYear() + '<br/>Uke ' + weekNum;
+    let date = dayOfWeek + ' ' + datenum + '. ' + monthstring + ' ' + today.getFullYear() + '<br/>Uke ' + weekNum;
 
     let greet;
 
