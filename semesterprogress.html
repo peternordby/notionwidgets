@@ -17,7 +17,6 @@
         #date {
             font-size: large;
         }
-
     </style>
 </head>
 
@@ -27,11 +26,11 @@
 
 <script>
     var today = new Date();
-    var semester_start = new Date(2022, 06, 25);
-    var semester_end = new Date(2022, 10, 18);
-    var progress = ((today.valueOf() - semester_start.valueOf())/(semester_end.valueOf() - semester_start.valueOf())*100).toFixed(1);
+    var semester_start = new Date(2023, 01, 20);
+    var semester_end = new Date(2023, 05, 19);
+    var progress = ((today.valueOf() - semester_start.valueOf()) / (semester_end.valueOf() - semester_start.valueOf()) * 100).toFixed(1);
     var msg = progress + "%";
-    
+
     document.getElementById('lbl').innerHTML = '<div id="date"> Semesterprogresjon: </div>' + msg;
 </script>
 
